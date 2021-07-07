@@ -1,8 +1,12 @@
 let arr = [1, 2, 3, 4, 5, 6];
 
-let avarage =
-  arr.reduce((accumulator, currentValue) => {
-    return accumulator + currentValue;
-  }, 0) / arr.length;
+function avarageWithReduce(arr) {
+  return (
+    arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0) /
+    arr.length
+  );
+}
+
+let avarage = avarageWithReduce(arr);
 
 console.log(avarage);
