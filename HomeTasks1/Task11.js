@@ -1,36 +1,33 @@
-let arr = [5, 8, [1, 1, 2, 1, 1, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 1]];
-let numberOfUnserved = 0;
+let arr = [1, 1, 2, 1];
 
-function isOne(arr) {
-  if (arr[0] > 0) {
-    arr[0]--;
-    return arr;
-  } else if (arr[1] > 0) {
-    arr[1]--;
-    arr[0]++;
-    return arr;
+let numberOfUnserved = 0,
+  singleTable = 1,
+  doubleTable = 1;
+
+function isOne() {
+  if (singleTable > 0) {
+    singleTable--;
+    return 0;
+  } else if (doubleTable > 0) {
+    doubleTable--;
+    singleTable++;
+    return 0;
   } else {
-    numberOfUnserved++;
-    return numberOfUnserved;
+    return 1;
   }
 }
 
-function isTwo(arr) {
-  if (arr[1] > 0) {
-    arr[1]--;
-    return arr;
+function isTwo() {
+  if (doubleTable > 0) {
+    doubleTable--;
+    return 0;
   } else {
-    numberOfUnserved++;
-    return numberOfUnserved;
+    return 1;
   }
 }
 
-arr.forEach;
-
-for (let index = 0; index < arr[2].length; index++) {
-  if (arr[2][index] == 1) {
-    isOne(arr);
-  } else isTwo(arr);
-}
+numberOfUnserved = arr.reduce(function (acc, currentHuman) {
+  return (acc += currentHuman == 1 ? isOne() : isTwo());
+}, 0);
 
 console.log(numberOfUnserved);
